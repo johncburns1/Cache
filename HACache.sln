@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30330.147
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HACache", "HACache\HACache.csproj", "{D2D20398-005A-456E-84C2-A0D3787BC1DE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HACache", "NordstromAssignment\HACache.csproj", "{92803FA0-E25C-477F-B9A5-C1CCCEA61782}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D2D20398-005A-456E-84C2-A0D3787BC1DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D2D20398-005A-456E-84C2-A0D3787BC1DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D2D20398-005A-456E-84C2-A0D3787BC1DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D2D20398-005A-456E-84C2-A0D3787BC1DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92803FA0-E25C-477F-B9A5-C1CCCEA61782}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92803FA0-E25C-477F-B9A5-C1CCCEA61782}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92803FA0-E25C-477F-B9A5-C1CCCEA61782}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92803FA0-E25C-477F-B9A5-C1CCCEA61782}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {6B9C2EEF-2B11-4DC6-89C7-4974063F23EF}
+		SolutionGuid = {8B78F2FB-FB58-4DCB-91AC-D7577891ED39}
 	EndGlobalSection
 EndGlobal

@@ -29,7 +29,6 @@ namespace HACache
 
         public long CacheKey { get; set; }
         public bool AvailableForReplica { get; set; }
-        public bool Master { get; set; }
 
         public override async Task<object> Add(object key, object value)
         {
@@ -42,7 +41,7 @@ namespace HACache
                     return null;
                 }
 
-                if (!Master)
+                if (value.GetType() == typeof(CacheEntry))
                 {
                     await ProcessCacheEntryAsync(key, (CacheEntry)value);
                 }
@@ -57,26 +56,6 @@ namespace HACache
             {
                 semaphore.Release();
             }
-        }
-
-        public new async Task<bool> Exists(object key)
-        {
-            if (Master)
-            {
-                return await cacheClient.ExistsAsync(key);
-            }
-
-            return await base.Exists(key);
-        }
-
-        public new async Task<object> Get(object key)
-        {
-            if (Master)
-            {
-                return await cacheClient.GetAsync(key);
-            }
-
-            return await base.Get(key);
         }
 
         private async Task ProcessCacheEntryAsync(object key, CacheEntry entry)

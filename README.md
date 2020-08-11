@@ -1,5 +1,5 @@
 # Cache
-Implementation of a memory class and a simple HA Cache without full backing implementation.
+Implementation of a memory class and a simple HA Cache without full backing implementation.  The logic within the caches are implemented but logic in the DBClient and CacheClient are mocked and represent "black boxes" for proof of concept.
 
 The technique used for HA and robustness is to implement a Master/Worker model in which all writes
 to the backing DB and workers are triggered through the master and then all reads are redirected to the

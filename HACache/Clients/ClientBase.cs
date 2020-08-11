@@ -4,10 +4,6 @@ using System.Dynamic;
 using System.Text;
 using System.Threading.Tasks;
 
-using Microsoft.Extensions.Configuration;
-
-using HACache.Models;
-
 namespace HACache.Clients
 {
     public interface ClientBase

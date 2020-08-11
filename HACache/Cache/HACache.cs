@@ -5,7 +5,6 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using HACache.Clients;
-using HACache.Models;
 
 namespace HACache
 {

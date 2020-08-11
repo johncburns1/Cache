@@ -5,10 +5,6 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-using Microsoft.Extensions.Configuration;
-
-using HACache.Models;
-
 namespace HACache.Clients
 {
     public class DBClient : ClientBase

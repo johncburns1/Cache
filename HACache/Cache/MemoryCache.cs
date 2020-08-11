@@ -52,43 +52,5 @@ namespace HACache
                 semaphore.Release();
             }
         }
-
-        public override async Task<object> Get(object key)
-        {
-            await semaphore.WaitAsync();
-
-            try
-            {
-                if (!IsInitialized())
-                {
-                    return null;
-                }
-
-                return entries.GetValueOrDefault(key, null);
-            }
-            finally
-            {
-                semaphore.Release();
-            }
-        }
-
-        public override async Task<bool> Exists(object key)
-        {
-            await semaphore.WaitAsync();
-
-            try
-            {
-                if (!IsInitialized())
-                {
-                    return false;
-                }
-
-                return entries.ContainsKey(key);
-            }
-            finally
-            {
-                semaphore.Release();
-            }
-        }
     }
 }

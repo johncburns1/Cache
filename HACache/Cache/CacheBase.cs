@@ -30,9 +30,43 @@ namespace HACache
 
         public abstract Task<object> Add(object key, object value);
 
-        public abstract Task<object> Get(object key);
+        public async Task<object> Get(object key)
+        {
+            await semaphore.WaitAsync();
 
-        public abstract Task<bool> Exists(object key);
+            try
+            {
+                if (!IsInitialized())
+                {
+                    return null;
+                }
+
+                return entries.GetValueOrDefault(key, null);
+            }
+            finally
+            {
+                semaphore.Release();
+            }
+        }
+
+        public async Task<bool> Exists(object key)
+        {
+            await semaphore.WaitAsync();
+
+            try
+            {
+                if (!IsInitialized())
+                {
+                    return false;
+                }
+
+                return entries.ContainsKey(key);
+            }
+            finally
+            {
+                semaphore.Release();
+            }
+        }
 
         public async Task Remove(object key)
         {

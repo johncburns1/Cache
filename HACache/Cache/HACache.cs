@@ -99,14 +99,12 @@ namespace HACache
 
         private async Task ProcessCacheEntryAsync(object key, CacheEntry entry)
         {
+            await Task.Delay(0);
+
             // add new entry locally
 
             queue.AddFirst(key);
             entries[key] = entry;
-
-            // try and add new value to the backing db.
-
-            await dbClient.AddAsync(key, entry);
         }
 
         private async Task ProcessNonCacheEntryAsync(object key, object value)
@@ -139,14 +137,10 @@ namespace HACache
             entries[key] = new CacheEntry(value, cacheKey);
 
             // add the new entry to other caches
-            // if we have a problem replicating to 
-            // replica cache write to backing db until
-            // replica cache is back up.
+            // add the new entry to backing db if not exist.
 
-            if (!await cacheClient.AddAsync(key, entries[key]))
-            {
-                await dbClient.AddAsync(key, entries[key]);
-            }
+            await cacheClient.AddAsync(key, entries[key]);
+            await dbClient.AddAsync(key, entries[key]);
         }
     }
 }

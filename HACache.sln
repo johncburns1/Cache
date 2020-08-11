@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30330.147
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HACache", "NordstromAssignment\HACache.csproj", "{92803FA0-E25C-477F-B9A5-C1CCCEA61782}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HACache", "HACache\HACache.csproj", "{92803FA0-E25C-477F-B9A5-C1CCCEA61782}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

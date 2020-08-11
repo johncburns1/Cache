@@ -13,7 +13,7 @@ namespace HACache.Clients
     public interface ClientBase
     {
         public Task<CacheEntry> GetAsync(object key);
-        public Task<bool> AddAsync(object key, CacheEntry value);
+        public Task AddAsync(object key, CacheEntry value);
         public Task<bool> ExistsAsync(object key);
         public Task RemoveAsync(object key);
     }

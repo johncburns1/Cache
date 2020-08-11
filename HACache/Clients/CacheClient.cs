@@ -1,46 +1,49 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
-
-using Microsoft.Extensions.Configuration;
+using System.Threading.Tasks;
 
 using HACache.Models;
-using System.Threading.Tasks;
-using System.Transactions;
 
 namespace HACache.Clients
 {
     public class CacheClient : ClientBase
     {
         private Dictionary<long, HACache> mockCaches = new Dictionary<long, HACache>();
-        private long replicaKey;
+        private HashSet<long> replicaKeys;
 
         public CacheClient()
         {
-            Task.Run(async () => this.replicaKey = await GetReplicaCacheKeyAsync()).Wait();
         }
 
         public long ReplicaKey { get; set; }
 
-        public async Task<bool> AddAsync(object key, CacheEntry value)
+        public async Task AddAsync(object key, CacheEntry value)
         {
-            return await mockCaches[replicaKey].Add(key, value) != null;
+            foreach (var worker in mockCaches.Values)
+            {
+                await mockCaches[worker.CacheKey].Add(key, value);
+            }
         }
 
         public async Task<bool> ExistsAsync(object key)
         {
-            return await mockCaches[replicaKey].Exists(key);
+            return await mockCaches[mockCaches.First().Value.CacheKey].Exists(key);
         }
 
         public async Task<CacheEntry> GetAsync(object key)
         {
-            return (CacheEntry) await mockCaches[replicaKey].Get(key);
+            return (CacheEntry) await mockCaches[mockCaches.First().Value.CacheKey].Get(key);
         }
 
         public async Task RemoveAsync(object key)
         {
-            await Task.FromResult(mockCaches[replicaKey].Remove(key));
+            foreach (var worker in mockCaches.Values)
+            {
+                await Task.FromResult(mockCaches[worker.CacheKey].Remove(key));
+            }
         }
 
         public void AddCache(HACache cache)

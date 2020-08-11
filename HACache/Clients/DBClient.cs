@@ -19,9 +19,10 @@ namespace HACache.Clients
         {
         }
 
-        public Task<bool> AddAsync(object key, CacheEntry value)
+        public async Task AddAsync(object key, CacheEntry value)
         {
-            throw new NotImplementedException();
+            await Task.Delay(0);
+            mockDB[key] = value;
         }
 
         public async Task<bool> ExistsAsync(object key)

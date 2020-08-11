@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-using HACache.Models;
-
 namespace HACache
 {
     public class MemoryCache : CacheBase

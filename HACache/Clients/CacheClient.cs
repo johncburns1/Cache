@@ -15,8 +15,6 @@ namespace HACache.Clients
         {
         }
 
-        public long ReplicaKey { get; set; }
-
         public async Task AddAsync(object key, CacheEntry value)
         {
             foreach (var worker in mockCaches.Values)

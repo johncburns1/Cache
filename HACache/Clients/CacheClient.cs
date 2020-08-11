@@ -10,7 +10,6 @@ namespace HACache.Clients
     public class CacheClient : ClientBase
     {
         private Dictionary<long, HACache> mockCaches = new Dictionary<long, HACache>();
-        private HashSet<long> replicaKeys;
 
         public CacheClient()
         {
